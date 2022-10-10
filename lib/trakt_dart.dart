@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:http/http.dart' show Client, Response;
 import 'package:json_annotation/json_annotation.dart';
 import 'package:tuple/tuple.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 part 'category/category.dart';
 part 'models/authentication_models.dart';
@@ -51,6 +52,7 @@ part 'trakt_manager_requests/sync_requests.dart';
 part 'trakt_manager_requests/user_requests.dart';
 
 part 'trakt_dart.g.dart';
+
 
 class TraktManager {
   String? _clientId;
