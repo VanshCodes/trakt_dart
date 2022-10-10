@@ -16,15 +16,17 @@ class Authentication extends Category {
   /// The Trakt website will request permissions for your app, which the user needs to approve.
   /// If the user isn't signed into Trakt, it will ask them to do so.
   /// Send signup=true if you prefer the account sign up page to be the default.
-  Future<void> authorizeApplication({bool? signup}) async {
+   Future<void> authorizeApplication({bool? signup}) async {
     final url = Uri.parse(_manager._oauthURL);
-    final response = await _manager.client
-        .get(url, headers: {"Content-Type": "application/json"});
+    await ChromeSafariBrowser().open(url: url);
 
-    if (![200, 201, 204].contains(response.statusCode)) {
-      throw TraktManagerAPIError(
-          response.statusCode, response.reasonPhrase, response);
-    }
+    // final response = await _manager.client
+    //     .get(url, headers: {"Content-Type": "application/json"});
+    //
+    // if (![200, 201, 204].contains(response.statusCode)) {
+    //   throw TraktManagerAPIError(
+    //       response.statusCode, response.reasonPhrase, response);
+    // }
   }
 
   /// Use the authorization code GET parameter sent back to your redirect_uri to get an access_token.
